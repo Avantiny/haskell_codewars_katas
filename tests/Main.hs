@@ -1,6 +1,6 @@
 module Main where
 
-import Kata2
+import SixKyu
 import Kata
 import Test.Hspec
 

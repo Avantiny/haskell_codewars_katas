@@ -11,7 +11,7 @@ library katas
 
 test-suite my-tests
   main-is: Main.hs
-  build-depends: base, hspec
-  other-modules: Kata, Kata2
+  build-depends: base, hspec, mtl
+  other-modules: Kata, EightKyu, SevenKyu, SixKyu, FiveKyu, FourKyu
   hs-source-dirs: tests src
   default-language: Haskell2010
