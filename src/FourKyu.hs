@@ -33,3 +33,8 @@ mult (Nr a) (Nr b) = Nr (b . a)
 
 pow :: Number -> Number -> Number
 pow (Nr a) (Nr b) = Nr (b a)
+
+-- Multiplying numbers as strings
+
+multiply :: String -> String -> String
+multiply xs ys = show $ read xs * read ys

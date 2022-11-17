@@ -1,5 +1,7 @@
 module SixKyu where
 import Data.List
+import Numeric
+import Data.Char
 
 -- Build a pile of Cubes
 
@@ -51,3 +53,19 @@ findOutlier x = if  length l > 1 then head (filter even x)
 pyramid :: Int -> [[Int]]
 pyramid n | n == 0 = []
           | otherwise = pyramid (n-1) ++ [replicate n 1]
+
+-- Find the odd int
+
+findOdd :: [Int] -> Int
+findOdd xs = head $ concat $ filter (odd . length) (group $ sort xs)
+
+-- Stop gninnipS My sdroW!
+
+spinWords :: String -> String
+spinWords str = if last s == ' ' then init s else s
+                  where s = concatMap (\c -> if length c >= 5 then reverse c ++ " "else c ++ " ") (words str)
+
+-- Bit Counting
+
+countBits :: Int -> Int
+countBits x = length $ filter (== '1')  (showIntAtBase 2 intToDigit x "")
