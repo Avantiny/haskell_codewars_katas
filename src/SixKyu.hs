@@ -69,3 +69,12 @@ spinWords str = if last s == ' ' then init s else s
 
 countBits :: Int -> Int
 countBits x = length $ filter (== '1')  (showIntAtBase 2 intToDigit x "")
+
+-- CamelCase Method
+
+capitalized :: String -> String
+capitalized (head:tail) = toUpper head : map toLower tail
+capitalized [] = []
+
+camelCase :: String -> String
+camelCase x = concatMap capitalized (words x)

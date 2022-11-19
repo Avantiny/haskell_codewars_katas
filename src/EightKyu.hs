@@ -251,3 +251,15 @@ howManyLightsabersDoYouOwn x = 0
 
 sayHello :: String -> String
 sayHello str = "Hello, " ++ str
+
+-- Invert
+
+invert :: [Integer] -> [Integer]
+invert = fmap (\c -> if c > 0 then -c else abs c)
+
+-- Sum The Strings
+
+sumStr :: String -> String -> String
+sumStr a b = show (aa + bb)
+        where aa = if a == "" then 0 else read a
+              bb = if b == "" then 0 else read b

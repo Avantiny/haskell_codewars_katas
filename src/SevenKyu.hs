@@ -2,7 +2,6 @@ module SevenKyu where
 
 import Data.Char
 import Data.List
-
 -- Square Every Digit
 
 squareDigits :: String -> String
@@ -69,4 +68,28 @@ isVowel'' c = c `elem` "aeiou"
 getCount :: String -> Int
 getCount c = length $ filter isVowel'' c
 
--- 
+-- Fizz Buzz
+
+fizzbuzz' :: Int -> String
+fizzbuzz' x | x `mod` 5 == 0 && x `mod` 3 == 0 = "FizzBuzz"
+            | x `mod` 3 == 0 = "Fizz"
+            | x `mod` 5 == 0 = "Buzz"
+            | otherwise = show x
+
+
+fizzbuzz :: Int -> [String]
+fizzbuzz n = fmap fizzbuzz' [1..n]
+
+-- Highest and Lowest
+
+highAndLow :: String -> String
+highAndLow input = show (maximum nums) ++ " " ++ show (minimum nums)
+                where nums = fmap read (words input) :: [Int]
+
+-- Descending Order
+
+getSorted :: Integer -> [Int]
+getSorted x = reverse . sort $ fmap digitToInt (show x)
+
+descendingOrder :: Integer -> Integer
+descendingOrder x = read $ fmap intToDigit (getSorted x)
