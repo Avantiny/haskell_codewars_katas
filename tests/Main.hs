@@ -2,6 +2,7 @@ module Main where
 
 import SixKyu ( findNb )
 import FourKyu ( snail )
+import FiveKyu
 import Kata
 import Test.Hspec
 

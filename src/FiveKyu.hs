@@ -1,9 +1,11 @@
+{-# LANGUAGE PartialTypeSignatures #-}
 module FiveKyu where
 
 import Control.Monad.State
 import GHC.Float
 import Debug.Trace
 import Data.List
+import Data.Ord
 
 -- Product of consecutive Fib numbers
 
@@ -57,3 +59,11 @@ humanReadable x = tenCondition totalHours ++ ":" ++ tenCondition totalMinutes ++
                         totalMinutes = x `div` 60 
                         minutes = totalMinutes - (60 * totalHours)
                         seconds = x - (3600 * totalHours + 60 * minutes)
+
+-- Perimeter of squares in a rectangle
+
+fib' :: [Integer]
+fib' = 0 : 1 : zipWith (+) fib' (tail fib') 
+      
+perimeter :: Integer -> Integer
+perimeter n = 4 * sum (take (fromIntegral n+1) fib')

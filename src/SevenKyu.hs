@@ -93,3 +93,9 @@ getSorted x = reverse . sort $ fmap digitToInt (show x)
 
 descendingOrder :: Integer -> Integer
 descendingOrder x = read $ fmap intToDigit (getSorted x)
+
+-- Sort Numbers
+
+sortNumbers :: [Int] -> Maybe [Int]
+sortNumbers xs | not (null xs)  = Just (sort xs)
+               | otherwise = Nothing

@@ -78,3 +78,23 @@ capitalized [] = []
 
 camelCase :: String -> String
 camelCase x = concatMap capitalized (words x)
+
+-- Find the unique number
+
+getUnique :: [Int] -> Int
+getUnique (x : xs)
+  | x /= head xs = if x == head (tail xs) then head xs else x
+  | x /= head (tail xs) = if x == head xs then head (tail xs) else x
+  | otherwise = getUnique xs
+
+-- Character with longest consecutive repetition
+
+maxi :: Int -> [String] -> String -> String
+maxi n [] c = c
+maxi n (x:xs) c = if length x > n then maxi (length x) xs x else maxi n xs c
+
+
+longestRepetition :: String -> Maybe (Char, Int)
+longestRepetition "" = Nothing
+longestRepetition input = Just (head x, length x)
+                        where x = maxi 0 (group input) ""
