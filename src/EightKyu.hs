@@ -263,3 +263,24 @@ sumStr :: String -> String -> String
 sumStr a b = show (aa + bb)
         where aa = if a == "" then 0 else read a
               bb = if b == "" then 0 else read b
+
+-- Convert number to reversed array of digits
+
+digitize :: Int -> [Int]
+digitize s = reverse $ fmap digitToInt (show s)
+
+-- Square(n) Sum
+
+squareSum :: [Integer] -> Integer
+squareSum x = sum (fmap (^2) x)
+
+-- Remove String Spaces
+
+noSpace :: String -> String
+noSpace = filter (/= ' ')
+
+-- Grasshopper - Summation
+
+summation :: Integer -> Integer 
+summation n | n == 1 = 1
+            | otherwise = n + summation (n-1)
