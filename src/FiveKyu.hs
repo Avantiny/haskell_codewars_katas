@@ -67,3 +67,20 @@ fib' = 0 : 1 : zipWith (+) fib' (tail fib')
       
 perimeter :: Integer -> Integer
 perimeter n = 4 * sum (take (fromIntegral n+1) fib')
+
+-- Directions Reduction
+
+data Direction = North | East | West | South deriving (Eq)
+
+isOpposite :: Direction -> Direction -> Bool
+isOpposite a b = (a == North && b == South)||(a == East && b == West)||(b == North && a == South)||(b == East && a == West)
+
+dirReduce :: [Direction] -> [Direction]
+dirReduce x = if length firstIteration == length secondIteration then firstIteration else dirReduce firstIteration
+              where firstIteration = dirReduceAcc [] x
+                    secondIteration = dirReduceAcc [] firstIteration
+
+dirReduceAcc :: [Direction] -> [Direction] -> [Direction]
+dirReduceAcc acc [] = acc
+dirReduceAcc acc [x] = acc ++ [x]
+dirReduceAcc acc (x:y:xs) = if isOpposite x y then dirReduceAcc acc xs else dirReduceAcc (acc ++ [x]) (y:xs)
