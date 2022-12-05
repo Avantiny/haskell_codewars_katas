@@ -98,3 +98,24 @@ longestRepetition :: String -> Maybe (Char, Int)
 longestRepetition "" = Nothing
 longestRepetition input = Just (head x, length x)
                         where x = maxi 0 (group input) ""
+
+-- Begin your day with a challenge, but an easy one.
+
+-- replicateByLength :: Int -> String -> String
+-- replicateByLength n [] = []
+-- replicateByLength n (x:xs) = replicate n x ++ replicateByLength (n - 1) xs
+
+-- reverseMulti :: Integer -> Integer
+-- reverseMulti x = read $ replicateByLength (length a) a
+--                  where a = reverse (show x)
+
+byNine :: Integer -> Integer
+byNine n | n < 10 = n
+         | otherwise = read $ concatMap show (sub : [modulo | modulo /= 0])
+           where sub = read $ concatMap show (replicate (fromIntegral n `div` 9) 9)
+                 modulo = n `mod` 9
+
+oneTwoThree :: Integer -> [Integer]
+oneTwoThree 0 = [0,0]
+oneTwoThree n = byNine n
+  : [read $ concatMap show (replicate (fromIntegral n) 1)]

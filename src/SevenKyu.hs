@@ -99,3 +99,29 @@ descendingOrder x = read $ fmap intToDigit (getSorted x)
 sortNumbers :: [Int] -> Maybe [Int]
 sortNumbers xs | not (null xs)  = Just (sort xs)
                | otherwise = Nothing
+
+-- The fusc function part 1
+
+fusc :: Int -> Int
+fusc 0 = 0
+fusc 1 = 1
+fusc x | even x = fusc (x `div` 2)
+       | otherwise = fusc y + fusc (y + 1)
+                   where y = (x - 1) `div` 2
+
+-- Isograms
+
+isIsogram :: String -> Bool
+isIsogram x = nub y == y
+              where y = fmap toLower x
+
+-- Next Palindromic Number.
+
+nextPal :: Int -> Int
+nextPal n = if numStr == reverse numStr then n+1 else nextPal (n+1)
+            where numStr = show (n + 1)
+
+-- Jaden Casing Strings
+
+toJadenCase :: String -> String
+toJadenCase js = unwords $ fmap (\(c:s) -> toUpper c:s) (words js)

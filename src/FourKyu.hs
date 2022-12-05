@@ -80,3 +80,13 @@ multiply xs ys = show $ read xs * read ys
 --   return x = Writer (mempty, x)
 --   (Writer (s, v)) >>= f = let (Writer (s', v')) = f v
 --                           in Writer (s `mappend` s', v')
+
+fusc :: Integer -> Integer
+fusc n = fuscRec n 1 0
+
+fuscRec :: Integer -> Integer -> Integer -> Integer
+fuscRec 0 a b = b
+fuscRec 1 a b = a + b
+fuscRec n a b | even n    = fuscRec (n `div` 2) (a + b) b
+              | otherwise = fuscRec (n `div` 2) a (a + b)
+
